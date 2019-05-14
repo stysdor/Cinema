@@ -58,6 +58,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IDataListRepository.cs" />
     <Compile Include="Repositories\IMovieRepository.cs" />
+    <Compile Include="Repositories\IReservationRepository.cs" />
+    <Compile Include="Repositories\IShowingRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
