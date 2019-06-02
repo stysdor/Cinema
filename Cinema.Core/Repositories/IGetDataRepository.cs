@@ -7,11 +7,9 @@ using Cinema.Core.Domain;
 
 namespace Cinema.Core.Repositories
 {
-    public interface IDataListRepository<T> where T:EntityBase
+    public interface IGetDataRepository<T> where T:EntityBase
     {
         T Get(int id);
         IList<T> GetAll();
-        int InsertOrUpdate(T item);
-        void Remove(int id);
     }
 }

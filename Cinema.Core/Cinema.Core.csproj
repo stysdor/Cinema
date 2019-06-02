@@ -32,6 +32,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,11 +59,21 @@
     <Compile Include="Domain\Theatre.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IDataListRepository.cs" />
+    <Compile Include="Repositories\ICategoryRepository.cs" />
+    <Compile Include="Repositories\ITheatreRepository.cs" />
+    <Compile Include="Repositories\IGetDataRepository.cs" />
+    <Compile Include="Repositories\IPersonalDataRepository.cs" />
+    <Compile Include="Repositories\IRowSeatRepository.cs" />
+    <Compile Include="Repositories\IReservationStatusRepository.cs" />
+    <Compile Include="Repositories\ISeatRepository.cs" />
+    <Compile Include="Repositories\IDataRepository.cs" />
     <Compile Include="Repositories\IMovieRepository.cs" />
+    <Compile Include="Repositories\ICustomerRepository.cs" />
     <Compile Include="Repositories\IReservationRepository.cs" />
     <Compile Include="Repositories\IShowingRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

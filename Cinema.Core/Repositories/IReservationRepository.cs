@@ -7,7 +7,9 @@ using Cinema.Core.Domain;
 
 namespace Cinema.Core.Repositories
 {
-    public interface IReservationRepository : IDataListRepository<Reservation>
+    public interface IReservationRepository : IDataRepository<Reservation>
     {
+        IList<Reservation> GetReservationByCustomer(Customer customer);
+        IList<Reservation> GetReservationByShowing(Showing showing);
     }
 }

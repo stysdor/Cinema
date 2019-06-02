@@ -7,9 +7,11 @@ using Cinema.Core.Domain;
 
 namespace Cinema.Core.Repositories
 {
-    public interface IShowingRepository : IDataRepository<Showing>
+    public interface IDataRepository<T>  where T:EntityBase 
     {
-        IList<Showing> GetShowingsByDate(DateTime date);
-        IList<Showing> GetShowingsByMovie(Movie movie);
+        T Get(int id);
+        IList<T> GetAll();
+        int InsertOrUpdate(T item);
+        void Remove(int id);
     }
 }

@@ -7,9 +7,7 @@ using Cinema.Core.Domain;
 
 namespace Cinema.Core.Repositories
 {
-    public interface IShowingRepository : IDataRepository<Showing>
+    public interface ITheatreRepository : IGetDataRepository<Theatre>
     {
-        IList<Showing> GetShowingsByDate(DateTime date);
-        IList<Showing> GetShowingsByMovie(Movie movie);
     }
 }

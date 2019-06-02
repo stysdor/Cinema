@@ -7,7 +7,8 @@ using Cinema.Core.Domain;
 
 namespace Cinema.Core.Repositories
 {
-    public interface IMovieRepository : IDataListRepository <Movie>
+    public interface IMovieRepository : IDataRepository <Movie>
     {
+        IList<Movie> GetMoviesByCategory(Category category);
     }
 }
