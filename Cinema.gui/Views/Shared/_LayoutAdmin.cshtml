@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Admin navigation -->
+<div class="bg-dark border-dark col-12" id="admin-nav">
+    <ul class="nav nav-tabs flex-column flex-sm-row">
+        <li class="flex-sm-fill text-sm-center nav-item">@Html.ActionLink("Filmy", "Index", "Movie", new { area = "" }, new { @class = "nav-link active" })</li>
+        <li class="flex-sm-fill text-sm-center nav-item">@Html.ActionLink("Seanse", "Index", "Showing", new { area = "" }, new { @class = "nav-link" })</li>
+        <li class="flex-sm-fill text-sm-center nav-item">@Html.ActionLink("Rezerwacje", "Index", "Reservation", new { area = "" }, new { @class = "nav-link" })</li>
+    </ul>
+</div>
+<div id="page-content-wrapper">
+    @RenderBody()
+</div>
+ 
+
+   

@@ -1,0 +1,55 @@
+﻿body {
+    background-image: url(pictures/background.jpg);
+    background-size: cover;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-top: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#copyright {
+    background: black;
+    color: #333;
+    font-size: 12px;
+    text-align: center;
+}
+
+#btn-panel {
+    width: 100%;
+    align-content: center;
+    padding: 20px;
+}
+
+#main-navbar {
+    width: 100%;
+    align-content: center;
+    background-color: black;
+    color: lightgray;
+}
+
+#main-navbar .navbar-brand {
+
+    color: lightgray;
+}
+
+
+#admin-nav {
+    width: 100%;
+    align-content: center;
+}
+
+#admin-nav .nav-link {
+    color: lightgray;
+}
+
+
