@@ -1,9 +1,38 @@
 ﻿@using Cinema.gui.Models
-
+@model List<Showing>
 @{
     ViewBag.Title = "Seanse";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
+<div class="container">
+    <br />
+    <br />
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr class="row">
+                <th class="col-2">Id</th>
+                <th class="col-4">Tytul filmu</th>
+                <th class="col-2">Sala</th>
+                <th class="col-2">Data</th>
+                <th class="col-2">Godzina</th>
+                <th colspan="2" class="add-button col-2">@Html.ActionLink("Dodaj seans", "AddShowing", "Showing", new { @class = "btn btn-primary btn-block btn-sm pull-right" }) </th>
+            </tr>
+        </thead>
+        <tbody class="list-body">
+            @foreach (var showing in Model)
+            {
+            <tr class="row">
+                <th class="col-2">@showing.Id</th>
+                <th class="col-4">@showing.MovieTitle</th>
+                <th class="col-2">@showing.TheatreId</th>
+                <th class="col-2">@showing.ShowingDateTime.ToString("dd/MM/yyyy")</th>
+                <th class="col-2">@showing.ShowingDateTime.ToString("HH:mm")</th>
+                <td class="col-1">@Html.ActionLink("Edytuj", "EditShowing", showing, new { @class = "btn btn-primary btn-block btn-sm pull-right" }) </td>
+                <td class="col-1">@Html.ActionLink("Usuń", "DeleteShowing", showing, new { @class = "btn btn-primary btn-block btn-sm pull-right" }) </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
 

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cinema.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Cinema.Test.MovieTest">
+            <summary>
+            Class tests Movie Service, including Repository and connecting with datebase etc. 
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.MovieTest.SetUp">
+            <summary>
+            Sets up.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.MovieTest.GetMovie">
+            <summary>
+            Tests getting movie by id.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.MovieTest.AddMovie">
+            <summary>
+            Tests adding movie to datebase.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.MovieTest.GetAllMovie">
+            <summary>
+            Tests getting list of movies from datebase.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.MovieTest.GetMoviesByCategory">
+            <summary>
+            Tests getting movies by category.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.MovieTest.EditMovie">
+            <summary>
+            Tests editing a movie.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.MovieTest.CleanUp">
+            <summary>
+            Removes added movie after tests.
+            </summary>
+        </member>
+        <member name="T:Cinema.Test.ShowingTest">
+            <summary>
+            Tests Showing service, including repository and connecting with datebase.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.ShowingTest.SetUp">
+            <summary>
+            Sets up.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.ShowingTest.GetShowing">
+            <summary>
+            Tests getting showing by id.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.ShowingTest.GetActuallShowings">
+            <summary>
+            Tests getting actual showings.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.ShowingTest.AddShowing">
+            <summary>
+            Tests adding showing.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.ShowingTest.CleanUp">
+            <summary>
+            Removes added showing.
+            </summary>
+        </member>
+        <member name="T:Cinema.Test.ReservationTest">
+            <summary>
+            Tests Reservation Service, including repository and connecting with datebase.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.ReservationTest.SetUp">
+            <summary>
+            Sets up.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.ReservationTest.GetReservationByShowing">
+            <summary>
+            Tests getting reservation by showing.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.ReservationTest.GetSeats">
+            <summary>
+            Tests getting seats, including reserved one, for the showing.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.ReservationTest.AddReservation">
+            <summary>
+            Tests adding reservation to datebase.
+            </summary>
+        </member>
+        <member name="M:Cinema.Test.ReservationTest.CleanUp">
+            <summary>
+            Removes added in test reservation.
+            </summary>
+        </member>
+    </members>
+</doc>

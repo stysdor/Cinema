@@ -12,31 +12,45 @@ using Dapper;
 
 namespace Cinema.Infrastructure.Repositories
 {
+    /// <summary>
+    /// Repository implementation for movie object.
+    /// </summary>
     public class MovieRepository : IMovieRepository
     {
-
+        /// <summary>
+        /// Gets a movie with custom id.
+        /// </summary>
+        /// <param name="id">id of the movie</param>
+        /// <returns>Movie object</returns>
         public Movie Get(int id)
         {
             Movie movie = null;
-            Category category = null;
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
             {
                 db.Open();
-                category = db.Query<Category>($"SELECT Category.Id, Category.CategoryName FROM Movie " +
-                                                $"INNER JOIN Category ON Category.Id = Movie.CategoryId WHERE Movie.Id = {id}").SingleOrDefault();
-                movie = db.Query<Movie>("SELECT Id, MovieTitle, MovieDescription, Country, YearOfProduction, DateOfPremiere FROM Movie " +
-                                                "WHERE Id =" + id, new { CategoryId = category}).SingleOrDefault();
+                movie = db.Query<Movie, Category, Movie>("SELECT M.Id, M.MovieTitle, M.MovieDescription, M.Country, M.YearOfProduction, M.CategoryId, C.Id, C.CategoryName FROM Movie AS M INNER JOIN Category As C ON M.CategoryId = C.Id  " +
+                                                $"WHERE M.Id = {id}", 
+                                                (movieObj, categoryObj) => {
+                                                    movieObj.CategoryId = categoryObj;
+                                                    return movieObj;
+                                                }, splitOn: "CategoryId")
+                                                .Distinct()
+                                                .SingleOrDefault();
             }
             return movie;
         }
 
+        /// <summary>
+        /// Gets all movies from database.
+        /// </summary>
+        /// <returns>List of Movie objects.</returns>
         public IList<Movie> GetAll()
         {
             IList<Movie> movies = null;
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
             {
                 db.Open();
-                movies = db.Query<Movie, Category, Movie>("SELECT * FROM Movie INNER JOIN Category ON Movie.CategoryId = Category.Id", 
+                movies = db.Query<Movie, Category, Movie>("SELECT M.Id, M.MovieTitle, M.MovieDescription, M.Country, M.YearOfProduction, M.CategoryId, C.Id, C.CategoryName FROM Movie AS M INNER JOIN Category AS C ON M.CategoryId = C.Id", 
                     (movie, category) =>
                     {
                         movie.CategoryId = category;
@@ -48,6 +62,11 @@ namespace Cinema.Infrastructure.Repositories
             return movies;
         }
 
+        /// <summary>
+        /// Gets movie by custom category.
+        /// </summary>
+        /// <param name="category">Category name.</param>
+        /// <returns>List of Movie objects.</returns>
         public IList<Movie> GetMoviesByCategory(Category category)
         {
             int categoryId = category.Id;
@@ -55,12 +74,24 @@ namespace Cinema.Infrastructure.Repositories
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
             {
                 db.Open();
-                movies = db.Query<Movie>("SELECT Id, MovieTitle, MovieDescription, Country, YearOfProduction, DateOfPremiere FROM Movie " +
-                            $"WHERE CategoryId = {categoryId}", new { CategoryId = category }).ToList();
+                movies = db.Query<Movie, Category, Movie>("SELECT Movie.Id, Movie.MovieTitle, Movie.MovieDescription, Movie.Country, Movie.YearOfProduction, Movie.CategoryId, Category.CategoryName, Category.Id FROM Movie INNER JOIN Category ON Movie.CategoryId = Category.Id"
+                    + $" WHERE Movie.CategoryId = {categoryId}",
+                    (movie, categoryObj) =>
+                    {
+                        movie.CategoryId = categoryObj;
+                        return movie;
+                    }, splitOn: "CategoryId")
+                    .Distinct()
+                    .ToList();
             }
             return movies;
         }
 
+        /// <summary>
+        /// Insterts or Updates a movie depending on setting id. If id isn't set (the value equals 0) the movie is added. Otherwise the movie is modified.
+        /// </summary>
+        /// <param name="item">model of movie to add or edit.</param>
+        /// <returns>id of inserted movie or number of affected rows.</returns>
         public int InsertOrUpdate(Movie item)
         {
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
@@ -76,8 +107,8 @@ namespace Cinema.Infrastructure.Repositories
         private int Insert(Movie item, IDbConnection db)
         {
             int categoryId = item.CategoryId.Id;
-            string sql = @"INSERT INTO Movie (MovieTitle, MovieDescription, CategoryId, Country, YearOfProduction, DateOfPremiere)"
-                +$"Values (@MovieTitle, @MovieDescription, {categoryId}, @Country, @YearOfProduction, @DateOfPremiere);"
+            string sql = @"INSERT INTO Movie (MovieTitle, MovieDescription, CategoryId, Country, YearOfProduction)"
+                +$"Values (@MovieTitle, @MovieDescription, {categoryId}, @Country, @YearOfProduction);"
                 +@"SELECT CAST(SCOPE_IDENTITY() as int)";
             var id = db.Query<int>(sql, new
             {
@@ -85,8 +116,7 @@ namespace Cinema.Infrastructure.Repositories
                 item.MovieDescription,
                 item.CategoryId,
                 item.Country,
-                item.YearOfProduction,
-                item.DateOfPremiere
+                item.YearOfProduction
             }).Single();
 
             return id;
@@ -94,25 +124,28 @@ namespace Cinema.Infrastructure.Repositories
 
         private int Update(Movie item, IDbConnection db)
         {
-            const string sql = @"UPDATE Movie SET MovieTitle = @MovieTitle,
-                MovieDescription = @MovieDescription,
-                CategoryId = @CategoryId.Id,
-                Country = @Country,
-                YearOfProduction = @YearOfProduction,
-                DateOfPremiere = @DateOfPremiere WHERE Id = @Id";
+            int movieId = item.Id;
+            int categoryId = item.CategoryId.Id;
+            string sql = @"UPDATE Movie SET MovieTitle = @MovieTitle, MovieDescription = @MovieDescription, "+
+                $"CategoryId = {categoryId}, Country = @Country, " +
+                "YearOfProduction = @YearOfProduction " + 
+                $"WHERE Id = {movieId};";
             var affectedRows = db.Execute(sql, new
             {
                 item.Id,
                 item.MovieTitle,
                 item.MovieDescription,
-                CategoryId = item.CategoryId.Id,
+                item.CategoryId,
                 item.Country,
                 item.YearOfProduction,
-                item.DateOfPremiere
             });
             return affectedRows;
         }
 
+        /// <summary>
+        /// Removes the custom movie
+        /// </summary>
+        /// <param name="id">id of the movie to remove.</param>
         public void Remove(int id)
         {
             string sql = "DELETE FROM Movie WHERE Id=@Id";

@@ -12,8 +12,16 @@ using Dapper;
 
 namespace Cinema.Infrastructure.Repositories
 {
+    /// <summary>
+    /// Repository implementation for category object.
+    /// </summary>
     public class CategoryRepository : ICategoryRepository
     {
+        /// <summary>
+        /// Gets Category by id
+        /// </summary>
+        /// <param name="id">id of the category.</param>
+        /// <returns>Instance of Category class</returns>
         public Category Get(int id)
         {
             Category category = null;
@@ -26,6 +34,10 @@ namespace Cinema.Infrastructure.Repositories
             return category;
         }
 
+        /// <summary>
+        /// Gets list of all categories.
+        /// </summary>
+        /// <returns>IList of all categories.</returns>
         public IList<Category> GetAll()
         {
             IList<Category> categories = null;
@@ -37,6 +49,11 @@ namespace Cinema.Infrastructure.Repositories
             return categories;
         }
 
+        /// <summary>
+        /// Gets category object by its name. If category of that name doesn't exist it returns null.
+        /// </summary>
+        /// <param name="name">Name of category</param>
+        /// <returns>Categry object ar null.</returns>
         public Category GetByName(string name)
         {
             Category category = null;
@@ -48,12 +65,16 @@ namespace Cinema.Infrastructure.Repositories
                     category = db.Query<Category>($"SELECT * FROM Category " +
                                                         $" WHERE CategoryName = '{name}'").First();
                 }
-                catch { }
-               
+                catch { }       
             }
             return category;
         }
 
+        /// <summary>
+        /// Gets category object if category with that categoryName exists. Otherwise it insterts a new category into datebase. 
+        /// </summary>
+        /// <param name="name">Name of category</param>
+        /// <returns>Category object.</returns>
         public Category GetOrAddByName(string name)
         {
             int id;
@@ -73,6 +94,7 @@ namespace Cinema.Infrastructure.Repositories
                 + "SELECT CAST(SCOPE_IDENTITY() as int);";
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
             {
+
                 id = db.Query<int>(sql, new {
                     CategoryName = name
                 }).Single();

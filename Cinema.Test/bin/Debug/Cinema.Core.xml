@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cinema.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Cinema.Core.Domain.Category">
+            <summary>
+            Represents Category table from datebase.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Cinema.gui.Logic;
+using Cinema.gui.Models;
+using Cinema.Infrastructure.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,21 +18,30 @@ namespace Cinema.gui.Controllers
         }
 
         [HttpGet]
-        public ActionResult Today()
-        {
-            return View();
-        }
-
-        [HttpGet]
         public ActionResult Repertoire()
         {
-            return View();
+            var data = new ApiClient().GetData<List<ShowingDto>>("api/showing/GetActuall/14");
+            var list = new List<Showing>();
+            foreach (ShowingDto show in data)
+            {
+                list.Add(new Showing()
+                {
+                    Id = show.Id,
+                    MovieId = show.MovieId,
+                    MovieTitle = show.MovieTitle,
+                    TheatreId = show.TheatreId,
+                    ShowingDateTime = show.ShowingDateTime
+                });
+            }
+            return View(list);
         }
 
         [HttpGet]
-        public ActionResult Cinema()
+        public ActionResult Tickets()
         {
-            return View();
+            return RedirectToAction("Index","Reservation");
         }
+
+
     }
 }

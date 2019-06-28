@@ -1,9 +1,54 @@
 ﻿@using Cinema.gui.Models
+@model List<CustomerReservationModel>
 
 @{
     ViewBag.Title = "Rezerwacje";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
+<div class="container">
+    <br />
+    <br />
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr class="row">
+                <th class="col-1">Id seansu</th>
+                <th class="col-1">Id miejsca</th>
+                <th class="col-2">Status</th>
+                <th class="col-2">Imie</th>
+                <th class="col-2">Nazwisko</th>
+                <th class="col-1">Telefon</th>
+                <th class="col-1">E-mail</th>
+                <th colspan="2" class="add-button col-2">@Html.ActionLink("Nowa rezerwacja", "Repertoire", "Home", new object { }, new { @class = "btn btn-primary btn-block btn-sm pull-right" }) </th>
+            </tr>
+        </thead>
+        <tbody class="list-body">
+            @foreach (var reservation in Model)
+            {
+                @Html.Hidden("Id", reservation.Reservation.Id)
+            <tr class="row">
+                <td class="col-1">@reservation.Reservation.ShowingId</td>
+                <td class="col-1">@reservation.Reservation.RowSeatId</td>
+                <td class="col-1">@reservation.Reservation.Status</td>
+                @if (reservation.Customer != null)
+                {
+                    <td class="col-2">@reservation.Customer.CustomerName</td>
+                    <td class="col-2">@reservation.Customer.CustomerSurname</td>
+                    <td class="col-1">@reservation.Customer.Phone</td>
+                    <td class="col-1">@reservation.Customer.Email</td>
+                }
+                else
+                {
+                    <td class="col-2"></td>
+                    <td class="col-2"></td>
+                    <td class="col-1"></td>
+                    <td class="col-1"></td>
+                }
+                <td class="col-1">@Html.ActionLink("Potwierdz", "ConfirmReservation", reservation.Reservation, new { @class = "btn btn-primary btn-block btn-sm pull-right" }) </td>
+                <td class="col-1">@Html.ActionLink("Usuń", "DeleteReservation", reservation.Reservation, new { @class = "btn btn-primary btn-block btn-sm pull-right" }) </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
 

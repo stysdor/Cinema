@@ -12,8 +12,16 @@ using Dapper;
 
 namespace Cinema.Infrastructure.Repositories
 {
+    /// <summary>
+    /// Repository implementation for customer object.
+    /// </summary>
     public class CustomerRepository : ICustomerRepository
     {
+        /// <summary>
+        /// Gets customer by id.
+        /// </summary>
+        /// <param name="id">id of the customer</param>
+        /// <returns>Customer object</returns>
         public Customer Get(int id)
         {
             Customer customer = null;
@@ -26,6 +34,10 @@ namespace Cinema.Infrastructure.Repositories
             return customer;
         }
 
+        /// <summary>
+        /// Gets all customers
+        /// </summary>
+        /// <returns>List of Customers</returns>
         public IList<Customer> GetAll()
         {
             IList<Customer> customers = null;
@@ -37,35 +49,80 @@ namespace Cinema.Infrastructure.Repositories
             return customers;
         }
 
-        public int InsertOrUpdate(Customer item)
+        /// <summary>
+        /// Gets a customer by input data like Name, Surname, Phone or Email. Checks if customer with this data exists in database. Otherwise returns null.
+        /// </summary>
+        /// <param name="customerInput">Customer object with received data.</param>
+        /// <returns></returns>
+        public Customer GetByData(Customer customerInput)
         {
+            Customer customer = null;
             using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
             {
                 db.Open();
-                if (item.Id > 0)
-                    return Update(item, db);
-                else
-                    return Insert(item, db);
+                string sql1 = $"SELECT * FROM Customer  WHERE CustomerName = '{customerInput.CustomerName}' " +
+                             $" AND CustomerSurname = '{customerInput.CustomerSurname}' AND Phone = '{customerInput.Phone}'";
+                string sql2 = $"SELECT * FROM Customer  WHERE CustomerName = '{customerInput.CustomerName}' " +
+                             $" AND CustomerSurname = '{customerInput.CustomerSurname}' AND Email = '{customerInput.Email}'";
+                try
+                { 
+                    customer = db.Query<Customer>(sql1).First();
+                }
+                catch { }
+                if (customer == null) {
+                    try
+                    {
+                        customer = db.Query<Customer>(sql2).First();
+                    }
+                    catch { }
+                }
+
             }
+            return customer;
         }
 
-        private int Insert(Customer item, IDbConnection db)
+        /// <summary>
+        /// Gets a customer with input data ike Name, Surname, Phone, Email or adds if doesn't exist. 
+        /// Customer exists if there is a customer in database with the same name, surname and phone or name, surname and e-mail.
+        /// </summary>
+        /// <param name="customerInput">Customer object with input data.</param>
+        /// <returns>Customer object</returns>
+        public Customer GetOrAddByData(Customer customerInput)
         {
 
-            string sql = @"INSERT INTO Customers (PersonalDataId) Values (@PersonalDataId);
-                            SELECT CAST(SQOPE_IDENTITY() as int";
-            var id = db.Query<int>(sql, new
+            int id;
+            Customer customer = GetByData(customerInput);
+            if (customer == null)
             {
-                item.PersonalDataId
-            }).Single();
+                id = Insert(customerInput);
+                customer = Get(id);
+            }
+            return customer;
+        }
+
+        private int Insert(Customer item)
+        {
+            int id;
+            string sql = @"INSERT INTO Customer (CustomerName, CustomerSurname, Phone, Email) Values (@CustomerName, @CustomerSurname, @Phone, @Email);
+                            SELECT CAST(SCOPE_IDENTITY() as int);";
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlServerConnString"].ConnectionString))
+            {
+                db.Open();
+                id = db.Query<int>(sql, new
+                {
+                    item.CustomerName,
+                    item.CustomerSurname,
+                    item.Phone,
+                    item.Email
+                }).Single();
+            }
             return id;
         }
 
-        private int Update(Customer item, IDbConnection db)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Removes a custome customer.
+        /// </summary>
+        /// <param name="id">id of custom customer.</param>
         public void Remove(int id)
         {
             string sql = $"DELETE FROM Customer WHERE Id= {id}";
@@ -75,7 +132,5 @@ namespace Cinema.Infrastructure.Repositories
                 var affectedRows = db.Execute(sql, new { Id = id });
             }
         }
-
-  
-    }
+      }
 }

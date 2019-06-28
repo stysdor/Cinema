@@ -20,6 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -45,27 +47,19 @@
   <ItemGroup>
     <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\Customer.cs" />
-    <Compile Include="Domain\Employee.cs" />
     <Compile Include="Domain\EntityBase.cs" />
     <Compile Include="Domain\Movie.cs" />
-    <Compile Include="Domain\PersonalData.cs" />
     <Compile Include="Domain\Reservation.cs" />
-    <Compile Include="Domain\ReservationStatus.cs" />
     <Compile Include="Domain\Role.cs" />
     <Compile Include="Domain\RowSeat.cs" />
-    <Compile Include="Domain\Seat.cs" />
     <Compile Include="Domain\Showing.cs" />
-    <Compile Include="Domain\SubtitleDubbing.cs" />
     <Compile Include="Domain\Theatre.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\ITheatreRepository.cs" />
     <Compile Include="Repositories\IGetDataRepository.cs" />
-    <Compile Include="Repositories\IPersonalDataRepository.cs" />
     <Compile Include="Repositories\IRowSeatRepository.cs" />
-    <Compile Include="Repositories\IReservationStatusRepository.cs" />
-    <Compile Include="Repositories\ISeatRepository.cs" />
     <Compile Include="Repositories\IDataRepository.cs" />
     <Compile Include="Repositories\IMovieRepository.cs" />
     <Compile Include="Repositories\ICustomerRepository.cs" />

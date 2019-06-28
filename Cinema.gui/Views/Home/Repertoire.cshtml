@@ -1,7 +1,30 @@
-﻿
+﻿@using Cinema.gui.Models
+@model List<Showing>
 @{
     ViewBag.Title = "Repertoire";
 }
+<div class="page-header text-center"><h2>Repertuar</h2></div>
 
-<h2>Repertoire</h2>
+<div class="row">
+    @foreach (Showing showing in Model)
+    {
+    <div class="col-lg-6 col-sm-3 ">
+        <div class="showingTile">
+
+            <h2 class="showingTile-title">@showing.MovieTitle</h2>
+            <div class="row">
+                <div class="col-xs-6">
+                    <img class="showingTile-img" src="~/Content/pictures/movies/zielona mila.jpg" />
+                </div>
+                <div class="col-xs-6">
+                    <p class="bg-info">@showing.ShowingDateTime.DayOfWeek</p>
+                    <p>Dzień: @showing.ShowingDateTime.ToString("dd/MM")</p>
+                    <p>Godzina: @showing.ShowingDateTime.ToString("HH:mm")</p>
+                    @Html.ActionLink("Zarezerwuj", "AddReservation", "Reservation", showing, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+      </div>
+     </div>
+    }
+</div>
 

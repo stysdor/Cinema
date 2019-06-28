@@ -11,7 +11,6 @@ namespace Cinema.Core.Domain
         public Movie MovieId { get; set; }
         public Theatre TheatreId { get; set; }
         public DateTime ShowingDateTime { get; set; }
-        public SubtitleDubbing SubtitleDubbingId { get; set; }
 
     }
 }

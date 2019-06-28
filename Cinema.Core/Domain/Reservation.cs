@@ -9,10 +9,15 @@ namespace Cinema.Core.Domain
     public class Reservation :EntityBase
     {
         public Showing ShowingId { get; set; }
-        public Seat SeatId { get; set; }
-        public ReservationStatus ReservationStatusId { get; set; }
+        public RowSeat RowSeatId { get; set; }
+        public ReservationStatus Status { get; set; }
         public DateTime ReservationDate { get; set; }
         public Customer CustomerId { get; set; }
-        public Employee EmployeeId { get; set; }
+
+        public enum ReservationStatus
+        {
+            Unconfirmed = 0,
+            Confirmed  = 1
+        };
     }
 }

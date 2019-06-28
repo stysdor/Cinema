@@ -11,5 +11,6 @@ namespace Cinema.Core.Repositories
     {
         IList<Showing> GetShowingsByDate(DateTime date);
         IList<Showing> GetShowingsByMovie(Movie movie);
+        IList<Showing> GetActuall(int n);
     }
 }

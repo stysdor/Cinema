@@ -7,7 +7,9 @@ using Cinema.Core.Domain;
 
 namespace Cinema.Core.Repositories
 {
-    public interface ICustomerRepository : IDataRepository<Customer>
+    public interface ICustomerRepository : IGetDataRepository<Customer>
     {
+        Customer GetByData(Customer customer);
+        Customer GetOrAddByData(Customer customer);
     }
 }

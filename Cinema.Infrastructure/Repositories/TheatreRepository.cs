@@ -12,8 +12,17 @@ using Dapper;
 
 namespace Cinema.Infrastructure.Repositories
 {
+    /// <summary>
+    /// Repository implementation for theatre object.
+    /// </summary>
     public class TheatreRepository : ITheatreRepository
     {
+
+        /// <summary>
+        /// Gets Theatre by id.
+        /// </summary>
+        /// <param name="id">id of theatre</param>
+        /// <returns></returns>
         public Theatre Get(int id)
         {
             Theatre theatre = null;
@@ -21,11 +30,16 @@ namespace Cinema.Infrastructure.Repositories
             {
                 db.Open();
                 theatre = db.Query<Theatre>("SELECT * FROM Theatre " +
-                                                "WHERE Id =" + id, new { id }).SingleOrDefault();
+                                                $"WHERE Id = {id};", new { id }).SingleOrDefault();
             }
             return theatre;
         }
 
+        /// <summary>
+        /// Get all theatres.
+        /// It's make for the future use.
+        /// </summary>
+        /// <returns>List of theatres.</returns>
         public IList<Theatre> GetAll()
         {
             IList<Theatre> theatres = null;

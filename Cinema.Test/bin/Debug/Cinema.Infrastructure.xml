@@ -1,0 +1,369 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cinema.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:Cinema.Infrastructure.Dto.CustomerDto">
+            <summary>
+            DTO for Customer.
+            </summary>
+        </member>
+        <member name="T:Cinema.Infrastructure.Dto.MovieDto">
+            <summary>
+            DTO for Movie.
+            </summary>
+        </member>
+        <member name="T:Cinema.Infrastructure.Dto.ReservationDto">
+            <summary>
+            DTO for Reservation
+            </summary>
+        </member>
+        <member name="T:Cinema.Infrastructure.Dto.RowSeatDto">
+            <summary>
+            DTO for RowSeat. It has enum type Status to mark if seat is reserved or sold.
+            </summary>
+        </member>
+        <member name="T:Cinema.Infrastructure.Dto.RowSeatDto.Status">
+            <summary>
+            Possible values for Status.
+            </summary>
+        </member>
+        <member name="T:Cinema.Infrastructure.Dto.ShowingDto">
+            <summary>
+            DTO for Showing. It has MovieTitle for easier displaying information.
+            </summary>
+        </member>
+        <member name="T:Cinema.Infrastructure.Mappers.AutoMapperConfig">
+            <summary>
+            Mapper maps domain objects from Cinema.Core to DTO objects from Cinema.Infrastructure and revers.
+            </summary>
+        </member>
+        <member name="M:Cinema.Infrastructure.Mappers.AutoMapperConfig.Initialize">
+            <summary>
+            Initializes mapping.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Cinema.Infrastructure.Repositories.CategoryRepository">
+            <summary>
+            Repository implementation for category object.
+            </summary>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.CategoryRepository.Get(System.Int32)">
+            <summary>
+            Gets Category by id
+            </summary>
+            <param name="id">id of the category.</param>
+            <returns>Instance of Category class</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.CategoryRepository.GetAll">
+            <summary>
+            Gets list of all categories.
+            </summary>
+            <returns>IList of all categories.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.CategoryRepository.GetByName(System.String)">
+            <summary>
+            Gets category object by its name. If category of that name doesn't exist it returns null.
+            </summary>
+            <param name="name">Name of category</param>
+            <returns>Categry object ar null.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.CategoryRepository.GetOrAddByName(System.String)">
+            <summary>
+            Gets category object if category with that categoryName exists. Otherwise it insterts a new category into datebase. 
+            </summary>
+            <param name="name">Name of category</param>
+            <returns>Category object.</returns>
+        </member>
+        <member name="T:Cinema.Infrastructure.Repositories.CustomerRepository">
+            <summary>
+            Repository implementation for customer object.
+            </summary>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.CustomerRepository.Get(System.Int32)">
+            <summary>
+            Gets customer by id.
+            </summary>
+            <param name="id">id of the customer</param>
+            <returns>Customer object</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.CustomerRepository.GetAll">
+            <summary>
+            Gets all customers
+            </summary>
+            <returns>List of Customers</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.CustomerRepository.GetByData(Cinema.Core.Domain.Customer)">
+            <summary>
+            Gets a customer by input data like Name, Surname, Phone or Email. Checks if customer with this data exists in database. Otherwise returns null.
+            </summary>
+            <param name="customerInput">Customer object with received data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.CustomerRepository.GetOrAddByData(Cinema.Core.Domain.Customer)">
+            <summary>
+            Gets a customer with input data ike Name, Surname, Phone, Email or adds if doesn't exist. 
+            Customer exists if there is a customer in database with the same name, surname and phone or name, surname and e-mail.
+            </summary>
+            <param name="customerInput">Customer object with input data.</param>
+            <returns>Customer object</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.CustomerRepository.Remove(System.Int32)">
+            <summary>
+            Removes a custome customer.
+            </summary>
+            <param name="id">id of custom customer.</param>
+        </member>
+        <member name="T:Cinema.Infrastructure.Repositories.MovieRepository">
+            <summary>
+            Repository implementation for movie object.
+            </summary>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.MovieRepository.Get(System.Int32)">
+            <summary>
+            Gets a movie with custom id.
+            </summary>
+            <param name="id">id of the movie</param>
+            <returns>Movie object</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.MovieRepository.GetAll">
+            <summary>
+            Gets all movies from database.
+            </summary>
+            <returns>List of Movie objects.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.MovieRepository.GetMoviesByCategory(Cinema.Core.Domain.Category)">
+            <summary>
+            Gets movie by custom category.
+            </summary>
+            <param name="category">Category name.</param>
+            <returns>List of Movie objects.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.MovieRepository.InsertOrUpdate(Cinema.Core.Domain.Movie)">
+            <summary>
+            Insterts or Updates a movie depending on setting id. If id isn't set (the value equals 0) the movie is added. Otherwise the movie is modified.
+            </summary>
+            <param name="item">model of movie to add or edit.</param>
+            <returns>id of inserted movie or number of affected rows.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.MovieRepository.Remove(System.Int32)">
+            <summary>
+            Removes the custom movie
+            </summary>
+            <param name="id">id of the movie to remove.</param>
+        </member>
+        <member name="T:Cinema.Infrastructure.Repositories.ReservationRepository">
+            <summary>
+            Repository implementation for reservation object
+            </summary>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ReservationRepository.Get(System.Int32)">
+            <summary>
+            Gets reservation by id
+            </summary>
+            <param name="id">id of the reservation</param>
+            <returns>Reservation object</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ReservationRepository.GetAll">
+            <summary>
+            Gets all reservations.
+            </summary>
+            <returns>List of all reservations</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ReservationRepository.InsertOrUpdate(Cinema.Core.Domain.Reservation)">
+            <summary>
+            Insterts or Updates a reservation depending on setting id. If id isn't set (the value equals 0) the reservation is added. Otherwise the reservation is modified.
+            </summary>
+            <param name="item">model of reservation to add or edit.</param>
+            <returns>id of inserted reservation or number of affected rows.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ReservationRepository.Remove(System.Int32)">
+            <summary>
+            Removes the custom reservation
+            </summary>
+            <param name="id">id of the reservation to remove.</param>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ReservationRepository.GetReservationByShowing(Cinema.Core.Domain.Showing)">
+            <summary>
+            Gets reservations by showing.
+            </summary>
+            <param name="showing">object of showing</param>
+            <returns>List of reservation</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ReservationRepository.GetReservationByCustomer(Cinema.Core.Domain.Customer)">
+            <summary>
+            Gets list of reservations by customer
+            </summary>
+            <param name="customer">object of customer</param>
+            <returns>List of reservations.</returns>
+        </member>
+        <member name="T:Cinema.Infrastructure.Repositories.ShowingRepository">
+            <summary>
+            Repository implementation for showing object
+            </summary>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ShowingRepository.Get(System.Int32)">
+            <summary>
+            Gets showing by id.
+            </summary>
+            <param name="id">id of the showing.</param>
+            <returns>Showing object.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ShowingRepository.GetActuall(System.Int32)">
+            <summary>
+            Gets list of actuall showings.
+            </summary>
+            <param name="n">number of the nearest showing to get.</param>
+            <returns>List of actuall showings</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ShowingRepository.GetAll">
+            <summary>
+            Gets all showings.
+            </summary>
+            <returns>List of showings.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ShowingRepository.InsertOrUpdate(Cinema.Core.Domain.Showing)">
+            <summary>
+            Insterts or Updates a showing depending on setting id. If id isn't set (the value equals 0) the showing is added. Otherwise the showing is modified.
+            </summary>
+            <param name="item">model of showind to add or edit.</param>
+            <returns>id of inserted showing or number of affected rows.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ShowingRepository.Remove(System.Int32)">
+            <summary>
+            Removes showing by id. 
+            </summary>
+            <param name="id">id of the showing to remove.</param>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ShowingRepository.GetShowingsByDate(System.DateTime)">
+            <summary>
+            Gets list of showing by custom date. It's made for finding showing playing in the custom day.
+            </summary>
+            <param name="date">date of showings</param>
+            <returns>list of showings</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.ShowingRepository.GetShowingsByMovie(Cinema.Core.Domain.Movie)">
+            <summary>
+            Gets list of showings of the custom movie
+            </summary>
+            <param name="movie">custom movie</param>
+            <returns>list of showings of the custom movie</returns>
+        </member>
+        <member name="T:Cinema.Infrastructure.Repositories.TheatreRepository">
+            <summary>
+            Repository implementation for theatre object.
+            </summary>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.TheatreRepository.Get(System.Int32)">
+            <summary>
+            Gets Theatre by id.
+            </summary>
+            <param name="id">id of theatre</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Repositories.TheatreRepository.GetAll">
+            <summary>
+            Get all theatres.
+            It's make for the future use.
+            </summary>
+            <returns>List of theatres.</returns>
+        </member>
+        <member name="T:Cinema.Infrastructure.Services.MovieService">
+            <summary>
+            Provides methods for using movie
+            </summary> 
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.MovieService.#ctor(AutoMapper.IMapper)">
+            <summary>
+            Initializes an instance of MovieService class. Initalizes data fields: creates instance of MovieRepository and CategoryRepository.
+            </summary>
+            <param name="mapper">Mapper</param>
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.MovieService.Get(System.Int32)">
+            <summary>
+            Gets a custom MovieDto.
+            </summary>
+            <param name="id">id of the movie</param>
+            <returns>MovieDto object.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.MovieService.GetAll">
+            <summary>
+            Gets all Movies.
+            </summary>
+            <returns>List of MovieDto objects.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.MovieService.GetByCategory(System.String)">
+            <summary>
+            Gets movies by custom category.
+            </summary>
+            <param name="name">Category name</param>
+            <returns>List of MovieDto objects.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.MovieService.InsertOrUpdate(Cinema.Infrastructure.Dto.MovieDto)">
+            <summary>
+            Inserts or updates a movie. If id isn't set (the value is equal 0) the movie is insterted. Otherwise the movie is updated.
+            </summary>
+            <param name="item">movieDto object</param>
+            <returns>Id of interted movie or number of affected rows.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.MovieService.Remove(System.Int32)">
+            <summary>
+            Removes the movie.
+            </summary>
+            <param name="id">id of the movie to remove.</param>
+        </member>
+        <member name="T:Cinema.Infrastructure.Services.ShowingService">
+            <summary>
+            Provides methods for using showing 
+            </summary> 
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.ShowingService.#ctor(AutoMapper.IMapper)">
+            <summary>
+            Initializes instance of Showing service.
+            </summary>
+            <param name="mapper">mapper</param>
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.ShowingService.Get(System.Int32)">
+            <summary>
+            Gets showing by id.
+            </summary>
+            <param name="id">is of the showing.</param>
+            <returns>Showing DTO object.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.ShowingService.GetActuall(System.Int32)">
+            <summary>
+            Gets list of actuall showings. 
+            </summary>
+            <param name="n">number of the nearest showing</param>
+            <returns>list of actuall showings.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.ShowingService.GetAll">
+            <summary>
+            Gets all showings.
+            </summary>
+            <returns>List of all showings.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.ShowingService.GetByMovie(System.Int32)">
+            <summary>
+            Gets showing by the custom movie.
+            </summary>
+            <param name="id">id of the custom movie.</param>
+            <returns>List of showings.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.ShowingService.InsertOrUpdate(Cinema.Infrastructure.Dto.ShowingDto)">
+            <summary>
+            Inserts or updates showing. If id isn't set (the value is equal 0) the showing is insterted. Otherwise the showing is updated.
+            </summary>
+            <param name="item">showingDto object</param>
+            <returns>Id of interted showing or number of affected rows.</returns>
+        </member>
+        <member name="M:Cinema.Infrastructure.Services.ShowingService.Remove(System.Int32)">
+            <summary>
+            Removes the showing.
+            </summary>
+            <param name="id">id of the showing to remove.</param>
+        </member>
+    </members>
+</doc>

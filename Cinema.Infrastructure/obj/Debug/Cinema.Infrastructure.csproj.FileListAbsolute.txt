@@ -4,13 +4,15 @@ C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\Cinema.Infra
 C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\automapper.dll
 C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\Cinema.Core.dll
 C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\dapper.dll
+C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\System.Web.Razor.dll
 C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\Cinema.Core.pdb
 C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\automapper.xml
 C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\dapper.xml
+C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\System.Web.Razor.xml
 C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\obj\Debug\Cinema.Infrastructure.csprojAssemblyReference.cache
 C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\obj\Debug\Cinema.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\obj\Debug\Cinema.Infrastructure.csproj.CopyComplete
 C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\obj\Debug\Cinema.Infrastructure.dll
 C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\obj\Debug\Cinema.Infrastructure.pdb
-C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\System.Web.Razor.dll
-C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\System.Web.Razor.xml
+C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\Cinema.Infrastructure.xml
+C:\Users\Dorota\source\repos\Cinema\Cinema.Infrastructure\bin\Debug\Cinema.Core.xml

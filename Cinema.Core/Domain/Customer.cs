@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace Cinema.Core.Domain
 {
+    /// <summary>
+    /// Represents Customer table from datebase.
+    /// </summary>
     public class Customer : EntityBase
     {
-        public PersonalData PersonalDataId { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerSurname { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
 
     }
 }

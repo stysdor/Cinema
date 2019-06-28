@@ -12,39 +12,47 @@
         @using (var form = Html.BeginForm("AddMovie", "Movie", FormMethod.Post))
         {
             @Html.HiddenFor(x => x.Id)
-            <div class="form-group">
-                @Html.LabelFor(x => x.MovieTitle)
-                @Html.TextBoxFor(x => x.MovieTitle, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.MovieTitle, null, new { @class = "text-danger" })
+            <div class="form-group row">
+                @Html.LabelFor(x => x.MovieTitle, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(x => x.MovieTitle, new { @class = "form-control col-sm" })
+                    @Html.ValidationMessageFor(x => x.MovieTitle, null, new { @class = "text-danger" })
+                </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(x => x.MovieDescription)
-                @Html.TextAreaFor(x => x.MovieDescription, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.MovieDescription, null, new { @class = "text-danger" })
+            <div class="form-group row">
+                @Html.LabelFor(x => x.MovieDescription, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.MovieDescription, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.MovieDescription, null, new { @class = "text-danger" })
+                </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(x => x.CategoryName)
-                @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.CategoryName, null, new { @class = "text-danger" })
+            <div class="form-group row">
+                @Html.LabelFor(x => x.CategoryName, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.CategoryName, null, new { @class = "text-danger" })
+                </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(x => x.Country)
-                @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.Country, null, new { @class = "text-danger" })
+            <div class="form-group row">
+                @Html.LabelFor(x => x.Country, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Country, null, new { @class = "text-danger" })
+                </div>
             </div>
-            <div class="form-group"> 
-                @Html.LabelFor(x => x.YearOfProduction)
-                @Html.TextBoxFor(x => x.YearOfProduction, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.YearOfProduction, null, new { @class = "text-danger" })
+            <div class="form-group row">
+                @Html.LabelFor(x => x.YearOfProduction, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(x => x.YearOfProduction, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.YearOfProduction, null, new { @class = "text-danger" })
+                </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(x => x.DateOfPremiere)
-                @Html.TextBoxFor(x => x.DateOfPremiere, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.DateOfPremiere, null, new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-sm-12">
+                    <button class="btn btn-primary pull-right" type="submit">Zapisz</button>
+                </div>
             </div>
-            <button class="btn btn-primary pull-right" type="submit">Zapisz</button>
+        }
 
-        };
     </div>
-</div>
-
+  </div>

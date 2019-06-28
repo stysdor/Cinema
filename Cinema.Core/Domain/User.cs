@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cinema.Core.Domain
 {
+    /// <summary>
+    /// Represents User table from datebase.
+    /// </summary>
     public class User :EntityBase
     {
         public string UserLogin { get; set; }

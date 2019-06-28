@@ -14,23 +14,10 @@ namespace Cinema.Api.ioc
 
         public UnityResolver(IUnityContainer container)
         {
-            this.container = container ?? throw new ArgumentNullException("container");
-        }
-
-        public IDependencyScope BeginScope()
-        {
-            var child = container.CreateChildContainer();
-            return new UnityResolver(child);
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-        }
-
-        protected void Dispose(bool disposing)
-        {
-            container.Dispose();
+            if (container == null) {
+                throw new ArgumentException("container");
+            }
+            this.container = container;
         }
 
         public object GetService(Type serviceType)
@@ -44,6 +31,24 @@ namespace Cinema.Api.ioc
                 return null;
             }
         }
+
+        public IDependencyScope BeginScope()
+        {
+            var child = container.CreateChildContainer();
+            return new UnityResolver(child);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            container.Dispose();
+        }
+
+       
 
         public IEnumerable<object> GetServices(Type serviceType)
         {

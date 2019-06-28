@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace Cinema.Infrastructure.Dto
 {
+    /// <summary>
+    /// DTO for Reservation
+    /// </summary>
     public class ReservationDto
     {
+
+        public int Id { get; set; }
         public int ShowingId { get; set; }
-        public int SeatId { get; set; }
-        public int ReservationStatusId { get; set; }
-        public DateTime ReservationDate { get; set; }
+        public int RowSeatId { get; set; }
+        public int Status { get; set; }
         public int CustomerId { get; set; }
-        public int EmployeeId { get; set; }
+        
     }
 }

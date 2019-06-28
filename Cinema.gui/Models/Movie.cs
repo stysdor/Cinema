@@ -31,14 +31,10 @@ namespace Cinema.gui.Models
         [MinLength(3)]
         public string Country { get; set; }
 
+        [Required]
         [Display(Name = "Rok produkcji")]
-        [MaxLength(4)]
-        [MinLength(4)]
+        [RegularExpression("^([0-9]{4})$", ErrorMessage = "Wprowadź poprawny rok.")]
         public string YearOfProduction { get; set; }
 
-        [Display(Name = "Data premiery")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime DateOfPremiere { get; set; }
     }
 }

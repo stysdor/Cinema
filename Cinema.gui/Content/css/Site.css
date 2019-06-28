@@ -1,0 +1,294 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Oswald:400,500,600,700');
+
+:root {
+    --main-bg-color: #23272a;
+    --main-tx-color: lightgrey;
+    --bg-bg-color: rgba(255,255,255,0.5);
+    --bg-bg-color-hover: rgba(255,255,255,0.7);
+    --bg-tx-color: #23272a;
+    --main-tx-hover: white;
+    --main-bg-hover: #2c2f33;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    background-image: url(../pictures/background.jpg);
+    background-size: cover;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding: 50px 15px 100px 15px;
+    position: relative;
+    min-height: calc(100vh - 150px);
+    height: auto;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*************************************/
+/******* Main navigation panel********/
+#main-navbar {
+    width: 100%;
+    align-content: center;
+    background-color: black;
+}
+
+.logo {
+    height: 20px;
+    width: auto;
+    padding: 0;
+}
+
+/*************************************/
+/*********  title of the page  *******/
+.page-title-wrapper {
+	text-align: center;
+	color: var(--main-color);
+	margin: 80px auto 20px auto;
+	width: 100vw;
+}
+
+#page-title {
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 700;
+	letter-spacing: 3px;
+	font-size: 2.5em;
+	margin: 0 auto;
+}
+
+/*************************************/
+/************* Footer ****************/
+#copyright {
+    background: black;
+    color: #333;
+    font-size: 12px;
+    text-align: center;
+    margin: 0 0 0 0;
+    padding: 5px;
+}
+
+#footer {
+    position: absolute;
+    height: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 0;
+    color: #333;
+    font-size: 12px; 
+}
+
+.panel-footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: grey;
+}
+
+.footer-text {
+    margin: 0 0 0 0;
+}
+
+/*************************************/
+/*********Admin nav*******************/
+#admin-nav {
+    width: 100%;
+    align-content: center;
+}
+
+#admin-nav .nav-link {
+    color: lightgray;
+}
+
+/*************************************/
+/*********** Main content*************/
+.box-container .box  {
+text-align: center;
+}
+
+.card {
+    text-align: center;
+    background-color: var(--bg-bg-color);
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--bg-tx-color);
+    transition: all .5s ease;
+}
+.card:hover {
+    background-color: var(--bg-bg-color-hover);
+}
+.card .card-img {
+    font-size: 100px;
+}
+/*************************************/
+/*Movies, Showing and reservations list*/
+.table {
+    color: var(--bg-tx-color);
+    background-color: var(--bg-bg-color);
+    border-radius: 10px;
+    border: none;
+}
+thead {
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.table > thead:first-child > tr:first-child > th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.table > thead:first-child > tr:first-child > th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.table > tbody > .row {
+    transition: all .2s ease;
+}
+
+
+/*Forms*/
+.panel.panel-primary {
+    margin: 20px auto 20px auto;
+    border-color: var(--main-bg-color);
+}
+.panel {
+    max-width: 800px;
+}
+.panel-body {
+    padding: 20px 35px 20px 35px;  
+}
+.panel-primary > .panel-heading {
+    padding-left: 35px;
+    background-color: var(--main-bg-color);
+    border-color: var(--main-tx-color);
+}
+
+.btn-primary {
+    color: var(--main-tx-color);
+    background-color: var(--main-bg-color);
+    border-color: var(--main-bg-color);
+    transition: all .2s ease;
+}
+
+.btn-primary:hover {
+    color: var(--main-tx-hover);
+    background-color: var(--main-bg-hover);
+    border-color: var(--main-tx-hover);
+}
+
+/*Repertoire*/
+.showingTile {
+    background-color: var(--bg-bg-color);
+    padding: 0 0 0 0;
+    border-radius: 10px;
+    border: 1px solid var(--bg-tx-color); 
+    transition: all .5s ease;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.showingTile:hover {
+    background-color: var(--bg-bg-color-hover);
+}
+.showingTile-img {
+    max-width: 200px;
+    max-height: 260px;
+    height: auto;
+}
+
+.showingTile-title {
+    background-color: var(--main-bg-color);
+    color: var(--main-tx-color);
+    margin: 0;
+    padding: 7px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.showingTile .showingTile-title {
+    transition: all .5s ease;
+}
+.showingTile:hover .showingTile-title {
+    background-color: var(--main-bg-hover);
+    color: white;
+}
+
+.showingTile .col-xs-6 {
+height: 260px;
+vertical-align: middle;
+text-align: left;
+}
+
+.showingTile p {
+    margin: 20px 0;
+}
+
+.showingTile .bg-info {
+    margin-right: 40px;
+    padding: 2px;
+    text-align: center;
+}
+
+/*Seats reservation */
+.form-group .seats-row .seat {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--bg-tx-color);
+    text-align: center;
+    margin: 5px 5px;
+    border-radius: 3px;
+    display: inline-block;
+    box-sizing: border-box;
+    transition: all .2s ease;
+}
+
+    .form-group .seats-row .seat:hover {
+        background-color:lightblue;
+        cursor: pointer;
+        border-color: blue;
+        -webkit-box-shadow: 0px 0px 34px -8px rgba(38,38,38,0.54);
+        -moz-box-shadow: 0px 0px 34px -8px rgba(38,38,38,0.54);
+        box-shadow: 0px 0px 34px -8px rgba(38,38,38,0.54);
+    }
+
+.form-group .seats-row {
+    height: 30px;
+    width: 100%;
+    text-align: left;
+    padding: 2px;
+}
+
+.form-group .seats-row .row-number {
+    border-radius: 3px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.form-group .seats-row input[type=radio] {
+    display: none;
+}
+
+.form-group .seats-row .radio-label input[type="radio"]:checked + span {
+    background-color: var(--main-bg-color);
+    color: var(--main-tx-color);
+}
+
+.form-group .seats-row .seat.Reserved {
+    background-color: grey;
+    color: black;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.form-group .seats-row .seat.Sold {
+    background-color: lightgrey;
+    color: white;
+    border-color:white;
+    pointer-events: none;
+    opacity: 0.5;
+}

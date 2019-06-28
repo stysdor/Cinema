@@ -1,4 +1,4 @@
-﻿using Cinema.gui.logic;
+﻿using Cinema.gui.Logic;
 using Cinema.gui.Models;
 using Cinema.Infrastructure.Dto;
 using System;
@@ -14,21 +14,21 @@ namespace Cinema.gui.Controllers
         [HttpGet]
         public ViewResult Index()
         {
-            var dataDto = new ApiClient().GetData<List<MovieDto>>("api/movie/Get");
-            var data = new List<Movie>();
-            foreach (MovieDto movie in dataDto)
-            {
-                data.Add(new Movie()
+            var data = new ApiClient().GetData<List<MovieDto>>("api/movie");
+            var list = new List<Movie>();
+            foreach (MovieDto movieIn in data) {
+                list.Add(new Movie()
                 {
-                    MovieTitle = movie.MovieTitle,
-                    MovieDescription = movie.MovieDescription,
-                    CategoryName = movie.CategoryName,
-                    Country = movie.Country,
-                    DateOfPremiere = movie.DateOfPremiere,
-                    YearOfProduction = movie.YearOfProduction
+
+                    CategoryName = movieIn.CategoryName,
+                    Country = movieIn.Country,
+                    MovieDescription = movieIn.MovieDescription,
+                    MovieTitle = movieIn.MovieTitle,
+                    Id = movieIn.Id,
+                    YearOfProduction = movieIn.YearOfProduction
                 });
             }
-            return View(data);
+            return View(list);
         }
 
         [HttpGet]
@@ -37,10 +37,25 @@ namespace Cinema.gui.Controllers
             return View();
         }
 
-      
+
+        [HttpGet]
         public ActionResult EditMovie(Movie model)
         {
             return View(model);
+        }
+
+        public ActionResult DeleteMovie(Movie model)
+        {
+            var result = new ApiClient().PostData<MovieDto>("api/movie/Delete", new MovieDto()
+            {
+                MovieDescription = model.MovieDescription,
+                MovieTitle = model.MovieTitle,
+                Id = model.Id,
+                CategoryName = model.CategoryName,
+                Country = model.Country,
+                YearOfProduction = model.YearOfProduction
+            });
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -50,11 +65,11 @@ namespace Cinema.gui.Controllers
             {
                 var result = new ApiClient().PostData<MovieDto>("api/movie/Post", new MovieDto()
                 {
+                    Id = model.Id,
                     MovieTitle = model.MovieTitle,
                     MovieDescription = model.MovieDescription,
-                    Country = model.Country,
                     CategoryName = model.CategoryName,
-                    DateOfPremiere = model.DateOfPremiere,
+                    Country = model.Country,
                     YearOfProduction = model.YearOfProduction
                 });
                 return RedirectToAction("Index");

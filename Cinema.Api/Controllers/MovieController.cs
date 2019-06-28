@@ -24,7 +24,7 @@ namespace Cinema.Api.Controllers
 
         [HttpGet]
         public IHttpActionResult Get()
-        {
+        {   
             return Json(_movieService.GetAll());
         }
 
@@ -32,6 +32,14 @@ namespace Cinema.Api.Controllers
         public IHttpActionResult Post([FromBody] MovieDto movie)
         {
             _movieService.InsertOrUpdate(movie);
+            return Json(true);
+        }
+
+        [Route("api/movie/Delete")]
+        [HttpPost]
+        public IHttpActionResult Delete([FromBody] MovieDto movie)
+        {
+            _movieService.Remove(movie.Id);
             return Json(true);
         }
     }

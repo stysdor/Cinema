@@ -13,7 +13,6 @@ namespace Cinema.Core.Domain
         public Category CategoryId { get; set; }
         public string Country { get; set; }
         public string YearOfProduction { get; set; }
-        public DateTime DateOfPremiere { get; set; }
 
     }
 }

@@ -13,10 +13,10 @@ namespace Cinema.Api
 {
     public static class WebApiConfig
     {
+        
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -25,14 +25,27 @@ namespace Cinema.Api
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+              name: "ControllerAndActionId",
+              routeTemplate: "api/{controller}/{action}/{id}",
+              defaults: new { id = RouteParameter.Optional }
+            );
+
+
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "aplication/xml");
             config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
 
             //dependency Injection
             var container = new UnityContainer();
-            container.RegisterType<IMovieService,MovieService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IMovieService, MovieService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IShowingService, ShowingService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IReservationService, ReservationService>(new HierarchicalLifetimeManager());
+            container.RegisterType<ICustomerService, CustomerService>(new HierarchicalLifetimeManager());
             container.RegisterInstance<IMapper>(AutoMapperConfig.Initialize());
             config.DependencyResolver = new UnityResolver(container);
+
+            
 
         }
     }

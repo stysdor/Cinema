@@ -5,31 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Kino Neptun</title>
 
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/fontello.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
+    
+    <!-- Title of the page-->
+    <div class="page-title-wrapper">
+        <h1 id="page-title">Kino Neptun</h1>
+    </div>
+
     <!-- Main navigation Bar-->
     <nav class="navbar navbar-inverse navbar-fixed-top" id="main-navbar">
         <div class="container">
-            @Html.ActionLink("Kino Neptun", "Index", "Home", new object { }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+            <div class="navbar-header">
+                <a href="@Url.Action("Index", "Home")" class="navbar-brand">
+                    <img class="logo" src="~/Content/pictures/logo.png" alr="logo" />
+                </a>
+                <a href="@Url.Action("Index", "Home")" class="navbar-brand">
+                    <i class="icon-user main-bar-icon"></i>
+                </a>
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="nav navbar-nav mr-auto">
+                <ul class="nav navbar-nav mr-auto" id="main-nav">
                     <li class="nav-item">
-                        @Html.ActionLink("Dzis na ekranie", "Today", "Home", new object { }, new { @class = "nav-link" })
+                        @Html.ActionLink("Kino Neptun", "Index", "Home", new object { }, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("Repertuar", "Repertoire", "Home", new object { }, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Kino", "Cinema", "Home", new object { }, new { @class = "nav-link" })
+                        @Html.ActionLink("Bilety", "Tickets", "Home", new object { }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Baza danych", "Index", "Admin", new object { }, new { @class = "nav-link" })
                     </li>
                 </ul>
             </div>
@@ -43,13 +62,11 @@
             @RenderBody()
         </div>
 
-        <hr />
-        <footer>
+        <footer id="footer">
             <div class="panel-footer text-center">
-                <p> Kino Neptun </p>
-                <p>ul. Długa 26</p>
-                <p>Gdańsk</p>
-
+                <p class="footer-text"> Kino Neptun </p>
+                <p class="footer-text">ul. Długa 26</p>
+                <p class="footer-text">Gdańsk</p>
             </div>
             <p id="copyright">&copy; @DateTime.Now.Year - Dorota Styś</p>
         </footer>

@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Cinema.Infrastructure.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -50,25 +51,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Dto\CustomerDto.cs" />
     <Compile Include="Dto\MovieDto.cs" />
     <Compile Include="Dto\ReservationDto.cs" />
+    <Compile Include="Dto\RowSeatDto.cs" />
     <Compile Include="Dto\ShowingDto.cs" />
-    <Compile Include="Dto\UserDto.cs" />
     <Compile Include="Mappers\AutoMapperConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\MovieRepository.cs" />
-    <Compile Include="Repositories\PersonalDataRepository.cs" />
     <Compile Include="Repositories\ReservationRepository.cs" />
-    <Compile Include="Repositories\ReservationStatusRepository.cs" />
     <Compile Include="Repositories\RowSeatRepository.cs" />
-    <Compile Include="Repositories\SeatRepository.cs" />
     <Compile Include="Repositories\ShowingRepository.cs" />
     <Compile Include="Repositories\TheatreRepository.cs" />
+    <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\ICustomerService.cs" />
     <Compile Include="Services\IMovieService.cs" />
+    <Compile Include="Services\IReservationService.cs" />
+    <Compile Include="Services\IShowingService.cs" />
     <Compile Include="Services\MovieService.cs" />
+    <Compile Include="Services\ReservationService.cs" />
+    <Compile Include="Services\ShowingService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

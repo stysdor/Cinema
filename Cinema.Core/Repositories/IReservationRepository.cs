@@ -11,5 +11,6 @@ namespace Cinema.Core.Repositories
     {
         IList<Reservation> GetReservationByCustomer(Customer customer);
         IList<Reservation> GetReservationByShowing(Showing showing);
+
     }
 }

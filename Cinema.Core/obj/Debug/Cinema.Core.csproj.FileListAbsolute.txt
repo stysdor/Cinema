@@ -1,9 +1,10 @@
 C:\Users\Dorota\source\repos\Cinema\Cinema.Core\bin\Debug\Cinema.Core.dll
 C:\Users\Dorota\source\repos\Cinema\Cinema.Core\bin\Debug\Cinema.Core.pdb
-C:\Users\Dorota\source\repos\Cinema\Cinema.Core\obj\Debug\Cinema.Core.csprojAssemblyReference.cache
-C:\Users\Dorota\source\repos\Cinema\Cinema.Core\obj\Debug\Cinema.Core.csproj.CoreCompileInputs.cache
-C:\Users\Dorota\source\repos\Cinema\Cinema.Core\obj\Debug\Cinema.Core.dll
-C:\Users\Dorota\source\repos\Cinema\Cinema.Core\obj\Debug\Cinema.Core.pdb
 C:\Users\Dorota\source\repos\Cinema\Cinema.Core\bin\Debug\System.Web.Razor.dll
 C:\Users\Dorota\source\repos\Cinema\Cinema.Core\bin\Debug\System.Web.Razor.xml
+C:\Users\Dorota\source\repos\Cinema\Cinema.Core\obj\Debug\Cinema.Core.csproj.CoreCompileInputs.cache
 C:\Users\Dorota\source\repos\Cinema\Cinema.Core\obj\Debug\Cinema.Core.csproj.CopyComplete
+C:\Users\Dorota\source\repos\Cinema\Cinema.Core\obj\Debug\Cinema.Core.dll
+C:\Users\Dorota\source\repos\Cinema\Cinema.Core\obj\Debug\Cinema.Core.pdb
+C:\Users\Dorota\source\repos\Cinema\Cinema.Core\obj\Debug\Cinema.Core.csprojAssemblyReference.cache
+C:\Users\Dorota\source\repos\Cinema\Cinema.Core\bin\Debug\Cinema.Core.xml

@@ -139,20 +139,40 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="logic\ApiClient.cs" />
+    <Compile Include="Logic\ApiClient.cs" />
+    <Compile Include="Models\ShowingAddModel.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Reservation.cs" />
+    <Compile Include="Models\CustomerReservationModel.cs" />
+    <Compile Include="Models\Showing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-1.1.0.css" />
+    <Content Include="Content\bootstrap-1.1.0.min.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\animation.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\fontello-codes.css" />
+    <Content Include="Content\css\fontello-embedded.css" />
+    <Content Include="Content\css\fontello-ie7-codes.css" />
+    <Content Include="Content\css\fontello-ie7.css" />
+    <Content Include="Content\css\fontello.css" />
     <Content Include="Content\pictures\background.jpg" />
+    <Content Include="Content\pictures\baza.png" />
+    <Content Include="Content\pictures\calendar.png" />
+    <Content Include="Content\pictures\logo.png" />
+    <Content Include="Content\pictures\movies\zielona mila.jpg" />
+    <Content Include="Content\pictures\tickets.png" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontello.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\css\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -161,7 +181,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="fonts\fontello.eot" />
+    <Content Include="fonts\fontello.ttf" />
+    <Content Include="fonts\fontello.woff" />
+    <Content Include="fonts\fontello.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -189,9 +214,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\Home\Today.cshtml" />
     <Content Include="Views\Home\Repertoire.cshtml" />
-    <Content Include="Views\Home\Cinema.cshtml" />
     <Content Include="Views\Movie\AddMovie.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Movie\AddEditPartial.cshtml" />
@@ -199,10 +222,14 @@
     <Content Include="Views\Movie\Index.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
     <Content Include="Views\Showing\Index.cshtml" />
+    <Content Include="Views\Home\Tickets.cshtml" />
+    <Content Include="Views\Reservation\AddReservation.cshtml" />
+    <Content Include="Views\Showing\AddShowing.cshtml" />
+    <Content Include="Views\Showing\EditShowing.cshtml" />
+    <Content Include="Views\Showing\AddEditShowing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Showings\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

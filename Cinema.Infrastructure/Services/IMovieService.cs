@@ -11,6 +11,7 @@ namespace Cinema.Infrastructure.Services
     {
         MovieDto Get(int id);
         IList<MovieDto> GetAll();
+        IList<MovieDto> GetByCategory(string name);
         int InsertOrUpdate(MovieDto item);
         void Remove(int id);
     }
