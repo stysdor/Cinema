@@ -43,8 +43,7 @@ namespace Cinema.gui.Controllers
             return RedirectToAction("Index");
         }
 
-
-
+        
         [HttpGet]
         public ActionResult AddShowing()
         {
@@ -75,7 +74,16 @@ namespace Cinema.gui.Controllers
                 });
                 return RedirectToAction("Index");
             }
-            return View();
+            var movies = new ApiClient().GetData<List<MovieDto>>("api/movie");
+            foreach (var movie in movies)
+            {
+                model.Movies.Add(new SelectListItem()
+                {
+                    Text = movie.MovieTitle,
+                    Value = movie.Id.ToString()
+                });
+            }
+            return View(model);
         }
 
         [HttpGet]
